@@ -23,6 +23,35 @@ html {
   color: var(--apple-text-primary);
 }
 
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+:focus-visible {
+  box-shadow: 0 0 0 3px rgba(13, 77, 50, 0.22);
+}
+
+.section-title {
+  position: relative;
+  padding-bottom: 0.75rem;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 2.5rem;
+  height: 2px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, transparent, var(--emerald-apple), transparent);
+}
+
+.section-title-centered::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 /* ปรับระยะห่างบรรทัดสำหรับภาษาไทยให้อ่านง่าย สบายตา */
 p, span, label, input, textarea, select {
   line-height: 1.6;
@@ -74,6 +103,16 @@ p, span, label, input, textarea, select {
   border-color: rgba(13, 77, 50, 0.2);
 }
 
+#vision .grid > div {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+}
+
+#vision .grid > div:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px -4px rgba(0, 0, 0, 0.07), 0 2px 6px rgba(0, 0, 0, 0.03);
+  border-color: rgba(13, 77, 50, 0.2);
+}
+
 /* การ์ดสินค้าในตลาดนัดนักเรียน (Marketplace Product Card) */
 .market-card {
   background-color: #FFFFFF;
@@ -106,7 +145,37 @@ p, span, label, input, textarea, select {
 
 /* แสงเรืองอ่อนๆ ในส่วน Hero */
 .apple-hero-glow {
-  background: radial-gradient(circle at 50% 0%, rgba(13, 77, 50, 0.08) 0%, rgba(245, 245, 247, 0) 70%);
+  background:
+    linear-gradient(to bottom, rgba(245, 245, 247, 0.35) 0%, rgba(245, 245, 247, 0.45) 65%, #FFFFFF 100%),
+    radial-gradient(circle at 50% 0%, rgba(13, 77, 50, 0.08) 0%, rgba(245, 245, 247, 0) 70%),
+    url("images/background.png") center / cover no-repeat;
+}
+
+.silver-shine {
+  display: inline-block;
+  color: transparent;
+  background: linear-gradient(110deg, #86868B 35%, #B8B8BE 45%, #FFFFFF 50%, #B8B8BE 55%, #86868B 65%);
+  background-size: 300% 100%;
+  background-position: 100% center;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: silver-shine 3.2s ease-in-out infinite;
+}
+
+@keyframes silver-shine {
+  to {
+    background-position: 0% center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .silver-shine {
+    animation: none;
+    background: none;
+    color: var(--apple-text-secondary);
+    -webkit-text-fill-color: currentColor;
+  }
 }
 
 .apple-emerald-gradient {
