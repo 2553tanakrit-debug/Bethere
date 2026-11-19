@@ -151,6 +151,36 @@ p, span, label, input, textarea, select {
     url("images/background.jpg") center / cover no-repeat;
 }
 
+.hero-message {
+  width: fit-content;
+  max-width: 100%;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 20px;
+  box-shadow: 0 8px 28px -12px rgba(0, 0, 0, 0.18);
+}
+
+.hero-message-text {
+  color: var(--apple-text-secondary);
+}
+
+.hero-typewriter {
+  display: inline-block;
+  margin-left: 0.25em;
+  color: var(--emerald-apple);
+  font-weight: 700;
+  white-space: nowrap;
+  border-right: 2px solid currentColor;
+  padding-right: 0.08em;
+  animation: hero-caret 0.8s steps(1, end) infinite;
+}
+
+@keyframes hero-caret {
+  50% {
+    border-color: transparent;
+  }
+}
+
 .silver-shine {
   display: inline-block;
   color: transparent;
@@ -170,11 +200,19 @@ p, span, label, input, textarea, select {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .silver-shine {
+  .silver-shine,
+  .hero-typewriter {
     animation: none;
+  }
+
+  .silver-shine {
     background: none;
     color: var(--apple-text-secondary);
     -webkit-text-fill-color: currentColor;
+  }
+
+  .hero-typewriter {
+    border-right: 0;
   }
 }
 

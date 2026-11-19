@@ -16,6 +16,26 @@ document.addEventListener('DOMContentLoaded', () => {
     window.lucide.createIcons();
   }
 
+  const heroTypewriter = document.querySelector('.hero-typewriter');
+  if (heroTypewriter) {
+    const text = Array.from(heroTypewriter.dataset.text || '');
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      heroTypewriter.textContent = text.join('');
+    } else {
+      heroTypewriter.textContent = '';
+      let characterIndex = 0;
+      const typeNextCharacter = () => {
+        if (characterIndex >= text.length) return;
+        heroTypewriter.textContent += text[characterIndex];
+        characterIndex += 1;
+        window.setTimeout(typeNextCharacter, 95);
+      };
+
+      typeNextCharacter();
+    }
+  }
+
   /* -------------------------------------------------------------
      1. เมนูนำทางบนสมาร์ตโฟน (Mobile Navigation)
   ------------------------------------------------------------- */
