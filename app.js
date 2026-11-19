@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (characterIndex >= text.length) return;
         heroTypewriter.textContent += text[characterIndex];
         characterIndex += 1;
-        window.setTimeout(typeNextCharacter, 95);
+        window.setTimeout(typeNextCharacter, 180);
       };
 
       typeNextCharacter();
